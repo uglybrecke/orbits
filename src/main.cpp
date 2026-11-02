@@ -11,6 +11,8 @@
 #include "center.h"
 #include "Orbiter.h"
 
+#include <bn_log.h>
+
 // Maximum number of orbiters allowed on the screen
 static constexpr int MAX_ORBITERS = 30;
 
@@ -64,7 +66,35 @@ int main() {
         center.update();
         for(Orbiter& orbiter : orbiters) {
             orbiter.update();
+
+            //check distance for each orbiter from a water
+            bn::fixed_point w1_dist = orbiter.position() - water_1.position();
+            bn::fixed_point w2_dist = orbiter.position() - water_2.position();
+
+            //did we hit? check x and y coordinates against distance (sprite is 16x16)
+            bool hit_water_1 = 
+                   w1_dist.x() > -16
+                && w1_dist.x() < 16 
+                && w1_dist.y() > -16 
+                && w1_dist.y() < 16;
+
+            if (hit_water_1) {
+            BN_LOG("hit water 1");
+            }
+
+            bool hit_water_2 = 
+                   w2_dist.x() > -16
+                && w2_dist.x() < 16 
+                && w2_dist.y() > -16 
+                && w2_dist.y() < 16;
+
+            if (hit_water_2) {
+            BN_LOG("hit water 2");
+            }
+            
         }
+
+
 
         bn::core::update();
     }

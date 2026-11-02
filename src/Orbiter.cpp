@@ -43,3 +43,8 @@ void Orbiter::update() {
             // Update the position by taking a step by the velocity vector
             _sprite.set_position(_sprite.position() + _velocity);
 }
+
+//where is this orbiter
+bn::fixed_point Orbiter::position() {
+        return _sprite.position();
+}

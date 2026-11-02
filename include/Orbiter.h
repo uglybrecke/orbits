@@ -18,6 +18,9 @@ class Orbiter {
         Orbiter(bn::fixed_point starting_velocity, 
                 Center &center);
 
+        //making the sprites location public
+        bn::fixed_point position();
+
         /**
          * Take a step orbiting around the center.
          */
