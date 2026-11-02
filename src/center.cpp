@@ -1,6 +1,8 @@
 #include "center.h"
 #include "movement.h"
-#include "bn_sprite_items_square.h"
+#include <bn_sprite_items_square.h>
+#include <bn_fixed.h>
+#include <bn_fixed_point.h>
 
 
 Center::Center(bn::fixed_point starting_position, bn::fixed mass, bn::fixed speed) : 

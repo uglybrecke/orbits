@@ -1,5 +1,6 @@
 #pragma once
 #include <bn_fixed_point.h>
+#include <bn_sprite_ptr.h>
 #include "center.h"
 
 /**
@@ -19,4 +20,17 @@ class Orbiter {
                 bn::fixed_point starting_velocity, 
                 Center &center);
 
+        /**
+         * Take a step orbiting around the center.
+         */
+        void update();
+
+        private:
+            bn::sprite_ptr _sprite;
+            bn::fixed_point _velocity;
+            Center& _center;
+            // adding force scale inside each orbiter
+            // A scaling factor by which to reduce the force applied when orbiting
+            // Important for numerical stability
+            static constexpr bn::fixed FORCE_SCALE = 10;
 };
