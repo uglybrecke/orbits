@@ -9,8 +9,8 @@
  * An object that orbits around a center. Orbits using Hooke's law, as if attached by a 2D spring.
  * The stiffness of the spring in each dimension is center.mass() / FORCE_SCALE. 
  */
-Orbiter::Orbiter(bn::fixed_point starting_location, bn::fixed_point starting_velocity, Center &center) :
-        _sprite(bn::sprite_items::fire.create_sprite(starting_location)),
+Orbiter::Orbiter(bn::fixed_point starting_velocity, Center &center) :
+        _sprite(bn::sprite_items::fire.create_sprite(center.position() + bn::fixed_point(32, 0))),
         _velocity(starting_velocity),
         _center(center) {
         }

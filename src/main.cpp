@@ -14,25 +14,24 @@
 // Maximum number of orbiters allowed on the screen
 static constexpr int MAX_ORBITERS = 30;
 
-// Default starting posiiton and velocity for Orbiter
-static constexpr bn::fixed_point ORBITER_START_POSIITON = {0, 0};
-static constexpr bn::fixed_point ORBITER_START_VELOCITY = {0, 5};
+// Default velocity for Orbiter
+static constexpr bn::fixed_point ORBITER_START_VELOCITY = {0, 2};
 
 int main() {
     bn::core::init();
 
-    Center center = Center({30, 40}, .05, 2);
+    Center center = Center({0, 0}, .05, 1);
     bn::vector<Orbiter, MAX_ORBITERS> orbiters = {};
 
     //water drop
-    bn::sprite_ptr water_1 = bn::sprite_items::water.create_sprite(45,45);
-    bn::sprite_ptr water_2 = bn::sprite_items::water.create_sprite(-45,-45);
+    bn::sprite_ptr water_1 = bn::sprite_items::water.create_sprite(-60,80);
+    bn::sprite_ptr water_2 = bn::sprite_items::water.create_sprite(60,80);
     
     while(true) {
         // Add an orbiter when A is pressed if there's room
         if(bn::keypad::a_pressed()) {
             if(orbiters.size() < MAX_ORBITERS) {
-                orbiters.push_back(Orbiter(ORBITER_START_POSIITON, ORBITER_START_VELOCITY, center));
+                orbiters.push_back(Orbiter(ORBITER_START_VELOCITY, center));
             }
         }
 
