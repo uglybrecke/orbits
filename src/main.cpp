@@ -64,6 +64,8 @@ int main() {
         water_2.set_position(60, water_2_start);
 
         center.update();
+
+        int i = 0;
         for(Orbiter& orbiter : orbiters) {
             orbiter.update();
 
@@ -78,23 +80,21 @@ int main() {
                 && w1_dist.y() > -16 
                 && w1_dist.y() < 16;
 
-            if (hit_water_1) {
-            BN_LOG("hit water 1");
-            }
-
             bool hit_water_2 = 
                    w2_dist.x() > -16
                 && w2_dist.x() < 16 
                 && w2_dist.y() > -16 
                 && w2_dist.y() < 16;
 
-            if (hit_water_2) {
-            BN_LOG("hit water 2");
+            if(hit_water_1 || hit_water_2) {
+                //if hit use the index to delete the orbiter
+                orbiters.erase(orbiters.begin() + i);
+                //leave the loop immediatly
+                break;
             }
-            
+            //step the iterator if you didn't erase
+            i++;         
         }
-
-
 
         bn::core::update();
     }

@@ -29,7 +29,8 @@ class Orbiter {
         private:
             bn::sprite_ptr _sprite;
             bn::fixed_point _velocity;
-            Center& _center;
+            //using a POINTER instead of a reference allows us to reassign when removing from the vector
+            Center* _center;
             // adding force scale inside each orbiter
             // A scaling factor by which to reduce the force applied when orbiting
             // Important for numerical stability

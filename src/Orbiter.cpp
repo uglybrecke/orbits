@@ -12,7 +12,8 @@
 Orbiter::Orbiter(bn::fixed_point starting_velocity, Center &center) :
         _sprite(bn::sprite_items::fire.create_sprite(center.position())),
         _velocity(starting_velocity),
-        _center(center) {
+        //our variable now stores the wizard address
+        _center(&center)  {
                 //run this after making an Orbiter
                 //ask what direction the center is facing
                 bool which_way = center.direction(); 
@@ -28,13 +29,14 @@ Orbiter::Orbiter(bn::fixed_point starting_velocity, Center &center) :
         }
 
 void Orbiter::update() {
+                // _center now needs to use -> becasue it's a pointer https://www.geeksforgeeks.org/cpp/arrow-operator-vs-dot-operator-in-cpp/
             // A vector from the Orbiter to the Center
-            bn::fixed_point delta = _center.position() - _sprite.position();
+            bn::fixed_point delta = _center->position() - _sprite.position();
 
             // Scale the vector by the mass and apply a FORCE_SCALE
             // This is done in two steps instead of having a pre-scaled mass to prevent loss of
-            // fixed point precision
-            bn::fixed_point force = delta * _center.mass();
+            // fixed point precision            
+            bn::fixed_point force = delta * _center->mass();
             force /= FORCE_SCALE;
 
             // Update the current velocity with the force
