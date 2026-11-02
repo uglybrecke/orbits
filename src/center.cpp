@@ -22,3 +22,8 @@ void Center::update() {
 bn::fixed Center::mass() {
     return _mass;
 }
+
+//return whether or not the sprite is flipped
+bool Center::direction() {
+    return _sprite.horizontal_flip();
+}
