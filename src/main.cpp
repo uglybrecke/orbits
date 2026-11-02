@@ -2,12 +2,9 @@
 #include <bn_backdrop.h>
 #include <bn_color.h>
 #include <bn_keypad.h>
-#include <bn_fixed_point.h>
-#include <bn_sprite_ptr.h>
-#include <bn_vector.h>
 
-#include "bn_sprite_items_dot.h"
-#include "bn_sprite_items_square.h"
+#include <bn_fixed_point.h>
+#include <bn_vector.h>
 
 #include "movement.h"
 #include "center.h"
