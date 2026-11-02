@@ -20,9 +20,11 @@ void dPadMoveSprite(bn::sprite_ptr& sprite, bn::fixed speed) {
 
     if(bn::keypad::left_held()) {
         dx -= speed;
+        sprite.set_horizontal_flip(true); //flip the wizard
     }
     if(bn::keypad::right_held()) {
         dx += speed;
+        sprite.set_horizontal_flip(false); //flip the wizard
     }
     if(bn::keypad::up_held()) {
         dy -= speed;
