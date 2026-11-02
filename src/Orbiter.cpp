@@ -1,7 +1,7 @@
 #include "movement.h"
 #include "center.h"
 #include <bn_fixed_point.h>
-#include <bn_sprite_items_dot.h>
+#include <bn_sprite_items_fire.h>
 #include "Orbiter.h"
 
 
@@ -10,7 +10,7 @@
  * The stiffness of the spring in each dimension is center.mass() / FORCE_SCALE. 
  */
 Orbiter::Orbiter(bn::fixed_point starting_location, bn::fixed_point starting_velocity, Center &center) :
-        _sprite(bn::sprite_items::dot.create_sprite(starting_location)),
+        _sprite(bn::sprite_items::fire.create_sprite(starting_location)),
         _velocity(starting_velocity),
         _center(center) {
         }

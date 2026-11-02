@@ -5,6 +5,7 @@
 
 #include <bn_fixed_point.h>
 #include <bn_vector.h>
+#include <bn_sprite_items_water.h>
 
 #include "movement.h"
 #include "center.h"
@@ -22,6 +23,10 @@ int main() {
 
     Center center = Center({30, 40}, .05, 2);
     bn::vector<Orbiter, MAX_ORBITERS> orbiters = {};
+
+    //water drop
+    bn::sprite_ptr water_1 = bn::sprite_items::water.create_sprite(45,45);
+    bn::sprite_ptr water_2 = bn::sprite_items::water.create_sprite(-45,-45);
     
     while(true) {
         // Add an orbiter when A is pressed if there's room
