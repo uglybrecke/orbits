@@ -26,8 +26,6 @@ int main() {
     //water drop starting conditions
     int water_1_start = 80;
     int water_2_start = 80;
-    bool water_1_top = false;
-    bool water_2_top = false;
 
     bn::sprite_ptr water_1 = bn::sprite_items::water.create_sprite(-60, water_1_start);
     bn::sprite_ptr water_2 = bn::sprite_items::water.create_sprite(60, water_2_start);
@@ -47,25 +45,21 @@ int main() {
             }
         }
 
-        //first attempt to make water move up!
-        if (water_1_start > -90 && !water_1_top) {
+        //second attempt to make water move up!
+        if (water_1_start > -90) {
             water_1_start--;
         }else {
-            water_1_top = true;
             water_1_start = 90;
-            water_1.set_position(-60, water_1_start);
         }
 
-        if (water_2_start > -90 && !water_2_top) {
+        if (water_2_start > -90) {
             water_2_start--;
         }else {
-            water_2_top = true;
             water_2_start = 90;
-            water_2.set_position(60, water_2_start);
         }
 
-        water_1.set_position(water_1.position() + bn::fixed_point(-60, water_1_start));
-        water_2.set_position(water_1.position() + bn::fixed_point(60, water_2_start));
+        water_1.set_position(-60, water_1_start);
+        water_2.set_position(60, water_2_start);
 
         center.update();
         for(Orbiter& orbiter : orbiters) {
